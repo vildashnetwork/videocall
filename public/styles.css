@@ -7,3 +7,214 @@ video {
   width: 700px;
   height: 500px;
 }
+
+
+/* styles.css - responsive YouTube-like layout */
+:root {
+  --bg: #0b1220;
+  --panel: #061226;
+  --muted: #9fb3ff;
+  --accent: #ff3333;
+  --card: #071730;
+  --glass: rgba(255, 255, 255, 0.04);
+  --radius: 12px;
+  --gap: 16px;
+  font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #031027);
+  color: #e6eef8
+}
+
+a {
+  color: var(--muted)
+}
+
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--gap);
+  align-items: start;
+}
+
+/* video area */
+.video-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  min-height: 540px;
+  box-shadow: 0 6px 24px rgba(2, 6, 23, 0.6);
+}
+
+/* main video */
+#mainVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+  display: block;
+}
+
+/* top overlay: title & status */
+.video-top {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #fff;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge-live {
+  background: linear-gradient(90deg, #ff3b30, #ff6a5c);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.12)
+}
+
+.stream-title {
+  font-size: 16px;
+  font-weight: 700
+}
+
+.stream-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85)
+}
+
+/* bottom-left controls overlay */
+.video-controls {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--muted)
+}
+
+.small {
+  padding: 6px 8px;
+  font-size: 14px
+}
+
+/* local preview small tile (broadcaster) */
+.local-preview {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 200px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  background: #000;
+  z-index: 9;
+}
+
+.local-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+/* right side panel */
+.sidebar {
+  background: var(--panel);
+  padding: 14px;
+  border-radius: var(--radius);
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 26px rgba(2, 6, 23, 0.6);
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.viewer-count {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--muted)
+}
+
+.meta {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85)
+}
+
+/* chat placeholder and info */
+.card {
+  background: var(--glass);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+  color: #fff
+}
+
+/* responsive */
+@media (max-width:1000px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 12px
+  }
+
+  .sidebar {
+    order: 2
+  }
+
+  .video-card {
+    order: 1;
+    min-height: 420px
+  }
+
+  .local-preview {
+    right: unset;
+    left: 12px;
+    bottom: 84px
+  }
+}
