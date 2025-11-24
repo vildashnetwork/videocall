@@ -1,7 +1,7 @@
 const peerConnections = {};
 const config = {
   iceServers: [
-    { 
+    {
       "urls": "stun:stun.l.google.com:19302",
     },
     // { 
@@ -116,3 +116,15 @@ function gotStream(stream) {
 function handleError(error) {
   console.error("Error: ", error);
 }
+
+
+
+
+
+
+
+
+
+
+
+
