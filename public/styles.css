@@ -4,11 +4,18 @@ html {
 }
 
 video {
+  width: 1000px;
+  height: 1000px;
+}
+
+@media(max-width: 600px){
+  
+video {
   width: 700px;
   height: 500px;
 }
 
-
+}
 /* styles.css - responsive YouTube-like layout */
 :root {
   --bg: #0b1220;
